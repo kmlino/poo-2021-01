@@ -28,11 +28,55 @@ public class App {
 				n, s, d);
 		
 	}
+	
+	public static void exemplo04() {
+		String original = new String("abcde");
+		String nova = original.replace('c', 'x');
+		
+		System.out.printf("Original: %s\nNova: %s", original, nova);
+	}
+	
+	public static void exemplo05() {
+		// Wrappers permitem conversão de tipos
+		String s = new String("5");
+		int n = Integer.parseInt(s);
+		System.out.printf("s = %s\nn = %d\n", s, n);
+		
+		// Wrappers podem assumir valores nulos
+		Integer n1 = null;
+		System.out.println(n1);
+	}	
+	
+	public static void exemplo06() {
+		// Instancia o objeto aluno
+		Aluno aluno = new Aluno();
+		
+		// Altera os campos
+		aluno.setMatricula(123456);
+		aluno.setNome("Aluno Um");
+		
+		// Imprime os campos
+		System.out.printf("Matrícula: %d\nNome: %s\n",
+				aluno.getMatricula(),
+				aluno.getNome());
+		
+		// Instancia e configura o outro aluno
+		Aluno aluno2 = new Aluno();
+		aluno2.setMatricula(987654);
+		aluno2.setNome("Aluno Dois");
+		System.out.printf("Matrícula: %d\nNome: %s\n",
+				aluno2.getMatricula(),
+				aluno2.getNome());
+	}
 
+	
 	public static void main(String[] args) {
 		// exemplo01();
 		// exemplo02();
-		exemplo03();
+		// exemplo03();
+		// exemplo04();
+		// exemplo05();
+		exemplo06();
 	}
 
 }
