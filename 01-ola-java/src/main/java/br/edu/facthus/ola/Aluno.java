@@ -6,6 +6,17 @@ public class Aluno {
 	
 	private String nome;
 	
+	public Aluno(Integer matricula, String nome) {
+		this.matricula = matricula;
+		this.nome = nome;
+	}
+	
+	public void imprime() {
+		System.out.printf("-----\nMatrícula: %d\nNome: %s\n",
+				matricula,
+				nome);
+	}
+	
 	public Integer getMatricula() {
 		return matricula;
 	}

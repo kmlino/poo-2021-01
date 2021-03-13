@@ -49,24 +49,16 @@ public class App {
 	
 	public static void exemplo06() {
 		// Instancia o objeto aluno
-		Aluno aluno = new Aluno();
-		
-		// Altera os campos
-		aluno.setMatricula(123456);
-		aluno.setNome("Aluno Um");
-		
-		// Imprime os campos
-		System.out.printf("Matrícula: %d\nNome: %s\n",
-				aluno.getMatricula(),
-				aluno.getNome());
+		Aluno aluno = new Aluno(123456, "Aluno Um");
+		aluno.imprime();
 		
 		// Instancia e configura o outro aluno
-		Aluno aluno2 = new Aluno();
-		aluno2.setMatricula(987654);
-		aluno2.setNome("Aluno Dois");
-		System.out.printf("Matrícula: %d\nNome: %s\n",
-				aluno2.getMatricula(),
-				aluno2.getNome());
+		Aluno aluno2 = new Aluno(987654, "Aluno Dois");
+		aluno2.imprime();
+		
+		// Instancia e configura o outro aluno
+		Aluno aluno3 = new Aluno(111111, "Aluno Três");
+		aluno3.imprime();
 	}
 
 	
