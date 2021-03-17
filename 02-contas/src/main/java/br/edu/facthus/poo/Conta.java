@@ -19,7 +19,15 @@ public class Conta {
 		// Saldo inicial igual a 0
 		this.saldo = 0;
 	}
-
+	
+	public void deposito(Integer valor) {
+		this.saldo += valor;
+	}
+	
+	public void saque(Integer valor) {
+		this.saldo -= valor;
+	}
+	
 	public Integer getAgencia() {
 		return agencia;
 	}
