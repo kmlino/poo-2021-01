@@ -12,8 +12,18 @@ public class Gerente extends Funcionario {
 		this.gratificacao = gratificacao;
 	}
 	
+	public void imprime() {
+		System.out.printf("Gerente %s recebe R$ %d\n", 
+				nome, salario + gratificacao);
+	}
+	
+	public String getSalarioStr() {
+		return String.format("Gerente %s recebe R$ %d\n", 
+				nome, salario + gratificacao);
+	}
+	
 	public Integer getSalarioTotal() {
-		return getSalario() + gratificacao;
+		return salario + gratificacao;
 	}
 
 	private Integer gratificacao;

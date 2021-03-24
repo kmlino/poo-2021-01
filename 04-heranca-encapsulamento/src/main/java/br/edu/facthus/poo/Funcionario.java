@@ -4,17 +4,27 @@ import java.time.LocalDate;
 
 public class Funcionario {
 	
-	private String nome;
+	protected String nome;
 	
-	private Integer salario;
+	protected Integer salario;
 	
-	private LocalDate admissao;
+	protected LocalDate admissao;
 	
 	public Funcionario(String nome, Integer salario,
 			LocalDate admissao) {
 		this.nome = nome;
 		this.salario = salario;
 		this.admissao = admissao;
+	}
+	
+	public void imprime() {
+		System.out.printf("Funcionário %s recebe R$ %d\n", 
+				nome, salario);
+	}
+	
+	public String getSalarioStr() {
+		return String.format("Funcionário %s recebe R$ %d\n", 
+				nome, salario);
 	}
 	
 	public Integer getSalarioTotal() {

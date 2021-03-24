@@ -15,13 +15,10 @@ public class Main {
 		Gerente g1 = new Gerente(
 				"Joana", 2500, LocalDate.of(2002, 7, 15), 500);
 		
-		System.out.printf("%s recebe R$ %d\n", f1.getNome(), 
-				f1.getSalarioTotal());
-		System.out.printf("%s recebe R$ %d\n", f2.getNome(), 
-				f2.getSalarioTotal());
-		System.out.printf("%s recebe R$ %d\n", g1.getNome(), 
-				g1.getSalarioTotal());
-
+		f1.imprime();
+		f2.imprime();
+		g1.imprime();
+		
 	}
 
 }
