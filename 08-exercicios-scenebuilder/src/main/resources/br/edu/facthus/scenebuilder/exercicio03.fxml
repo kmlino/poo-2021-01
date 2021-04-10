@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="261.0" prefWidth="384.0" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.facthus.scenebuilder.Exercicio02Controller">
+<VBox alignment="CENTER" prefHeight="261.0" prefWidth="384.0" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.facthus.scenebuilder.Exercicio03Controller">
 	<children>
-		<Label text="Exercício 02">
+		<Label text="Exercício 03">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
@@ -20,7 +20,7 @@
             <Label text="Primeiro numero:" />
             <TextField fx:id="txtNumero1">
                <HBox.margin>
-                  <Insets />
+                  <Insets left="20.0" />
                </HBox.margin>
             </TextField>
          </children>
@@ -28,20 +28,29 @@
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="Segundo numero:" />
-            <TextField fx:id="txtNumero2" />
+            <TextField fx:id="txtNumero2">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></TextField>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
-         <padding>
-            <Insets right="20.0" />
-         </padding>
+         <children>
+            <Label text="Terceiro numero:" />
+            <TextField fx:id="txtNumero3">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
       </HBox>
+      <Label fx:id="lblSoma" />
+      <Label fx:id="lblMedia" />
+      <Label fx:id="lblProduto" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#soma" text="Soma" />
-            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#subtracao" text="Subtração" />
+            <Button mnemonicParsing="false" onAction="#calcula" text="Calcula" />
         </buttons>
       </ButtonBar>
-		<Label fx:id="lblSaida" />
 	</children>
 </VBox>
