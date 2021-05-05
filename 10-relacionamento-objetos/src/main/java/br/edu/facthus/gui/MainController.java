@@ -1,4 +1,4 @@
-package br.edu.facthus.scenebuilder;
+package br.edu.facthus.gui;
 
 import java.io.IOException;
 
