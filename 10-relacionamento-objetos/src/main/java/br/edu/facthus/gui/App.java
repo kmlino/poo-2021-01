@@ -16,43 +16,7 @@ public class App extends Application {
 	private static Scene scene;
 
 	public static void main(String[] args) {
-		// launch(args);
-		Pessoa p1 = new Pessoa("João da Silva", 
-				"123.456.789-10", 
-				"(34) 3322-1122");
-		
-		Imovel i1 = new Imovel("A123",
-				700.00,
-				p1);
-				
-		System.out.printf("Registro: %s\n"
-				+ "Aluguel: %.2f\n"
-				+ "Proprietário: %s\n"
-				+ "Alugado: %b\n",
-				i1.getRegistro(),
-				i1.getAluguel(), 
-				i1.getProprietario().getNome(),
-				i1.isAlugado());
-		
-		Corretor c1 = new Corretor("Maria da Silva",
-				"987.654.321-00",
-				"(34) 3333-2222",
-				"MG111",
-				0.1);
-		
-		i1.setCorretor(c1);
-		i1.setAlugado(true);
-		
-		System.out.printf("Registro: %s\n"
-				+ "Aluguel: %.2f\n"
-				+ "Proprietário: %s\n"
-				+ "Corretor: %s\n"
-				+ "Alugado: %b\n",
-				i1.getRegistro(),
-				i1.getAluguel(), 
-				i1.getProprietario().getNome(),
-				i1.getCorretor().getNome(),
-				i1.isAlugado());
+		launch(args);
 	}
 
 	@Override
