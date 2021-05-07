@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class MainController {
 	
-	private void mostraExercicio(String nomeFxml, String titulo) {
+	private void mostraJanela(String nomeFxml, String titulo) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(getClass().getResource(nomeFxml));
@@ -24,20 +24,18 @@ public class MainController {
 	}
 	
 	@FXML
-	private void ex01() {
-		mostraExercicio("exercicio01.fxml", "Exercício 01");
+	private void abreJanelaProprietarios() {
+		mostraJanela("proprietarios.fxml", "Cadastro de Proprietários");
 	}
 	
 	@FXML
-	private void ex02() {
-		mostraExercicio("exercicio02.fxml", "Exercício 02");
+	private void abreJanelaCorretores() {
+		// TODO: completar...
 	}
 	
 	@FXML
-	private void ex03() {
-		mostraExercicio("exercicio03.fxml", "Exercício 031");
+	private void abreJanelaImoveis() {
+		// TODO: completar...
 	}
-	
-	
 
 }
