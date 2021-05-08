@@ -2,7 +2,6 @@ package br.edu.facthus.gui;
 
 import br.edu.facthus.db.DbTeste;
 import br.edu.facthus.model.Corretor;
-import br.edu.facthus.model.Pessoa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
