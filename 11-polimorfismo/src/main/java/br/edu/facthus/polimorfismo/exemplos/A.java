@@ -1,4 +1,4 @@
-package br.edu.facthus.polimorfismo;
+package br.edu.facthus.polimorfismo.exemplos;
 
 public abstract class A {
 	

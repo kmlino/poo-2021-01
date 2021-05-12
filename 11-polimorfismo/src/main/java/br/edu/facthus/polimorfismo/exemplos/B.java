@@ -1,4 +1,4 @@
-package br.edu.facthus.polimorfismo;
+package br.edu.facthus.polimorfismo.exemplos;
 
 public class B extends A {
 	
