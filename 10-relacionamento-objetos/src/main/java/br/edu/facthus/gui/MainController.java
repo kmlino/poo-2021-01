@@ -30,7 +30,7 @@ public class MainController {
 	
 	@FXML
 	private void abreJanelaCorretores() {
-		// TODO: completar...
+		mostraJanela("corretores.fxml", "Cadastro de Corretores");
 	}
 	
 	@FXML

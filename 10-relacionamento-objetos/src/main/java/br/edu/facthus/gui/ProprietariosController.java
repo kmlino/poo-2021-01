@@ -1,5 +1,6 @@
 package br.edu.facthus.gui;
 
+import br.edu.facthus.db.DbTeste;
 import br.edu.facthus.model.Pessoa;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,6 +25,9 @@ public class ProprietariosController {
 		Pessoa pessoa = new Pessoa(txtNome.getText(),
 				txtCpf.getText(),
 				txtTelefone.getText());
+		
+		DbTeste.acrescentaProprietario(pessoa);
+		DbTeste.imprimeProprietarios();
 		
 		statusLabel.setText("Proprietário cadastrado com sucesso!");
 	}
