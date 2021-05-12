@@ -8,7 +8,7 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public void imprimeSalario() {
-		System.out.printf("Gerente: %s - Salário: R$ %.2f\n",
+		System.out.printf("Gerente: %s\n\tSalário: R$ %.2f\n",
 				nome, salario.add(gratificacao).floatValue());
 	}
 	
