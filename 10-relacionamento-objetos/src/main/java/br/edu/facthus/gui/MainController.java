@@ -13,7 +13,7 @@ public class MainController {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(getClass().getResource(nomeFxml));
-			Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+			Scene scene = new Scene(fxmlLoader.load(), 640, 480);
 			Stage stage = new Stage();
 			stage.setTitle(titulo);
 			stage.setScene(scene);

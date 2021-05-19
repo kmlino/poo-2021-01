@@ -1,7 +1,6 @@
 package br.edu.facthus.gui;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.edu.facthus.db.DbTeste;
@@ -41,18 +40,6 @@ public class ProprietariosController implements Initializable {
 	@FXML
 	private TableColumn<Pessoa, String> colTelefone;
 	
-	@FXML
-	private void cadastra() {
-		Pessoa pessoa = new Pessoa(txtNome.getText(),
-				txtCpf.getText(),
-				txtTelefone.getText());
-		
-		DbTeste.acrescentaProprietario(pessoa);
-		DbTeste.imprimeProprietarios();
-		
-		statusLabel.setText("Proprietário cadastrado com sucesso!");
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// Configura as factories
@@ -64,14 +51,28 @@ public class ProprietariosController implements Initializable {
 				new PropertyValueFactory<Pessoa, String>("telefone"));
 		
 		// Cria proprietários de teste
-		ArrayList<Pessoa> proprietarios = new ArrayList<>();
-		proprietarios.add(new Pessoa("João Silva", "123.456.789-10", "(34) 3322-2233"));
-		proprietarios.add(new Pessoa("Maria Souza", "987.654.321-00", "(34) 3322-2222"));
-		proprietarios.add(new Pessoa("José Silva", "111.222.333-44", "(34) 3322-3333"));
+		DbTeste.acrescentaProprietario(new Pessoa("João Silva", "123.456.789-10", "(34) 3322-2233"));
+		DbTeste.acrescentaProprietario(new Pessoa("Maria Souza", "987.654.321-00", "(34) 3322-2222"));
+		DbTeste.acrescentaProprietario(new Pessoa("José Silva", "111.222.333-44", "(34) 3322-3333"));
 		
 		// Vincula a lista à tabela
 		tblProprietarios.setItems(
-				FXCollections.observableArrayList(proprietarios));
+				FXCollections.observableArrayList(DbTeste.listaProprietarios()));
+	}
+	
+	@FXML
+	private void cadastra() {
+		Pessoa pessoa = new Pessoa(txtNome.getText(),
+				txtCpf.getText(),
+				txtTelefone.getText());
+		
+		DbTeste.acrescentaProprietario(pessoa);
+		
+		// Atualiza a tabela
+		tblProprietarios.setItems(
+				FXCollections.observableArrayList(DbTeste.listaProprietarios()));
+		
+		statusLabel.setText("Proprietário cadastrado com sucesso!");
 	}
 	
 }

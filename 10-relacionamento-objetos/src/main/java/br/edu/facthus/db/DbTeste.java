@@ -22,6 +22,14 @@ public class DbTeste {
 		corretores.add(corretor);
 	}
 	
+	public static List<Pessoa> listaProprietarios() {
+		return proprietarios;
+	}
+	
+	public static List<Corretor> listaCorretores() {
+		return corretores;
+	}
+	
 	public static void imprimeProprietarios() {
 		for (Pessoa p : proprietarios) 
 			System.out.printf("Proprietário: %s\n", p.getNome());

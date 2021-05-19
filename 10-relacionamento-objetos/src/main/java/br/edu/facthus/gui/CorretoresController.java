@@ -1,7 +1,6 @@
 package br.edu.facthus.gui;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.edu.facthus.db.DbTeste;
@@ -49,20 +48,6 @@ public class CorretoresController implements Initializable {
 	
 	@FXML
 	private TableColumn<Corretor, String> colCresci;
-	
-	@FXML
-	private void cadastra() {
-		Corretor corretor = new Corretor(txtNome.getText(),
-				txtCpf.getText(),
-				txtTelefone.getText(),
-				txtCresci.getText(),
-				Double.parseDouble(txtCorretagem.getText()));
-		
-		DbTeste.acrescentaCorretor(corretor);
-		DbTeste.imprimeCorretores();
-		
-		statusLabel.setText("Corretor cadastrado com sucesso!");
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,13 +60,28 @@ public class CorretoresController implements Initializable {
 		colCresci.setCellValueFactory(
 				new PropertyValueFactory<Corretor, String>("cresci"));
 		
-		ArrayList<Corretor> corretores = new ArrayList<>();
-		corretores.add(new Corretor("Fulano de Tal", "123", "1234", "111", .05));
-		corretores.add(new Corretor("Beltrano de Tal", "222", "333", "444", .05));
-		corretores.add(new Corretor("Cicrano de Tal", "555", "666", "777", .05));
+		DbTeste.acrescentaCorretor(new Corretor("Fulano de Tal", "123", "1234", "111", .05));
+		DbTeste.acrescentaCorretor(new Corretor("Beltrano de Tal", "222", "333", "444", .05));
+		DbTeste.acrescentaCorretor(new Corretor("Cicrano de Tal", "555", "666", "777", .05));
 		
 		tblCorretores.setItems(
-				FXCollections.observableArrayList(corretores));
+				FXCollections.observableArrayList(DbTeste.listaCorretores()));
+	}
+	
+	@FXML
+	private void cadastra() {
+		Corretor corretor = new Corretor(txtNome.getText(),
+				txtCpf.getText(),
+				txtTelefone.getText(),
+				txtCresci.getText(),
+				Double.parseDouble(txtCorretagem.getText()));
+		
+		DbTeste.acrescentaCorretor(corretor);
+		
+		tblCorretores.setItems(
+				FXCollections.observableArrayList(DbTeste.listaCorretores()));
+
+		statusLabel.setText("Corretor cadastrado com sucesso!");
 	}
 	
 }
