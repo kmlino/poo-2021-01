@@ -60,10 +60,6 @@ public class CorretoresController implements Initializable {
 		colCresci.setCellValueFactory(
 				new PropertyValueFactory<Corretor, String>("cresci"));
 		
-		DbTeste.acrescentaCorretor(new Corretor("Fulano de Tal", "123", "1234", "111", .05));
-		DbTeste.acrescentaCorretor(new Corretor("Beltrano de Tal", "222", "333", "444", .05));
-		DbTeste.acrescentaCorretor(new Corretor("Cicrano de Tal", "555", "666", "777", .05));
-		
 		tblCorretores.setItems(
 				FXCollections.observableArrayList(DbTeste.listaCorretores()));
 	}

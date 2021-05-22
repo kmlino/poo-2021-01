@@ -35,7 +35,7 @@ public class MainController {
 	
 	@FXML
 	private void abreJanelaImoveis() {
-		// TODO: completar...
+		mostraJanela("imoveis.fxml", "Cadastro de Imóveis");
 	}
 
 }
