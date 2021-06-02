@@ -2,19 +2,33 @@ package br.edu.facthus.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.facthus.exception.CustomException;
 import br.edu.facthus.model.Contato;
 
 public class ContatosDAO {
 	
-	public static void criaBD() {
+	private Connection getConnection() {
 		try {
 			Connection connection = DriverManager
-					.getConnection("jdbc:sqlite:teste.db");
+					.getConnection("jdbc:sqlite:contatos.db");
+		
+			return connection;
+		} catch (SQLException e) {
+			throw new CustomException("Erro abrindo conexão com o banco de dados.");
+		}
+	}
+	
+	
+	public void criaBD() {
+		try {
+			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
 			
 			statement.executeUpdate(
@@ -23,54 +37,52 @@ public class ContatosDAO {
 					+ "nome TEXT,"
 					+ "email TEXT,"
 					+ "PRIMARY KEY (id))");
-			
-			System.out.println("Banco criado com sucesso!");
 		} catch (SQLException e) {
-			System.out.println("Ocorreu um erro de SQL");
 			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao criar o banco de dados.");
 		}
 	}
 	
-	public static void insereContatos() {
+	public void insereContato(Contato contato) {
 		try {
-			Connection connection = DriverManager
-					.getConnection("jdbc:sqlite:teste.db");
-			Statement statement = connection.createStatement();
-			
-			statement.executeUpdate(
+			Connection connection = getConnection();
+			PreparedStatement statement = connection.prepareStatement(
 					"INSERT INTO contatos (nome, email) "
-					+ "VALUES ('abc', 'abc@mail.com')");
-			statement.executeUpdate(
-					"INSERT INTO contatos (nome, email) "
-					+ "VALUES ('def', 'def@mail.com')");
-			statement.executeUpdate(
-					"INSERT INTO contatos (nome, email) VALUES "
-					+ "('ghi', 'ghi@mail.com')");
+					+ "VALUES (?, ?)");
 			
-			System.out.println("Contatos cadastrados com sucesso!");
+			statement.setString(1, contato.getNome());
+			statement.setString(2, contato.getEmail());
+			
+			statement.execute();
 		} catch (SQLException e) {
-			System.out.println("Ocorreu um erro de SQL");
 			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao inserir o contato.");
 		}
 	}
 	
-	public static void pesquisaContatos() {
+	public List<Contato> pesquisaContatos() {
+		List<Contato> contatos = new ArrayList<>();
+		
 		try {
-			Connection connection = DriverManager
-					.getConnection("jdbc:sqlite:teste.db");
+			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
 			
 			ResultSet rs = statement.executeQuery(
-					"SELECT id, nome, email FROM contatos");
+					"SELECT id, nome, email FROM contatos ORDER BY nome");
+			
 			while (rs.next()) {
-				System.out.printf("Id: %d | Nome: %s | Email: %s\n",
-						rs.getInt("id"),
-						rs.getString("nome"),
-						rs.getString("email"));
+				Contato contato = new Contato();
+				contato.setId(rs.getInt("id"));
+				contato.setNome(rs.getString("nome"));
+				contato.setEmail(rs.getString("email"));
+				
+				contatos.add(contato);
 			}
+			
+			return contatos; 
 		} catch (SQLException e) {
-			System.out.println("Ocorreu um erro de SQL");
 			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao pesquisar os contatos.");
 		}		
 	}
 	

@@ -13,28 +13,46 @@ public class Contato {
 	
 	private StringProperty email = new SimpleStringProperty();
 
-	public IntegerProperty getId() {
-		return id;
+	public Contato() {
+		
+	}
+	
+	public Contato(Integer id, String nome, String email) {
+		this.id = new SimpleIntegerProperty(id);
+		this.nome = new SimpleStringProperty(nome);
+		this.email = new SimpleStringProperty(email);
 	}
 
-	public void setId(IntegerProperty id) {
-		this.id = id;
-	}
-
-	public StringProperty getNome() {
+	public StringProperty getNomeProperty() {
 		return nome;
 	}
-
-	public void setNome(StringProperty nome) {
-		this.nome = nome;
-	}
-
-	public StringProperty getEmail() {
+	
+	public StringProperty getEmailProperty() {
 		return email;
 	}
 
-	public void setEmail(StringProperty email) {
-		this.email = email;
+	public Integer getId() {
+		return id.get();
+	}
+
+	public void setId(Integer id) {
+		this.id.set(id);
+	}
+
+	public String getNome() {
+		return nome.get();
+	}
+
+	public void setNome(String nome) {
+		this.nome.set(nome);
+	}
+
+	public String getEmail() {
+		return email.get();
+	}
+
+	public void setEmail(String email) {
+		this.email.set(email);
 	}
 
 }
