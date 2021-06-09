@@ -14,11 +14,14 @@ import br.edu.facthus.model.Contato;
 
 public class ContatosDAO {
 	
+	private Connection connection = null;
+	
 	private Connection getConnection() {
 		try {
-			Connection connection = DriverManager
+			if (connection == null)
+				connection = DriverManager
 					.getConnection("jdbc:sqlite:contatos.db");
-		
+			
 			return connection;
 		} catch (SQLException e) {
 			throw new CustomException("Erro abrindo conexão com o banco de dados.");
@@ -85,16 +88,37 @@ public class ContatosDAO {
 			throw new CustomException("Ocorreu um erro ao pesquisar os contatos.");
 		}		
 	}
-	
-	
-	public void cadastra(Contato contato) {
-		// TODO...
-	}
-	
-	public List<Contato> pesquisa(String nome) {
-		// TODO...
 		
-		return null;
+	public void atualiza(Contato contato) {
+		try {
+			Connection connection = getConnection();
+			PreparedStatement statement = connection.prepareStatement(
+					"UPDATE contatos SET nome = ?, email = ? WHERE id = ?");
+			
+			statement.setString(1, contato.getNome());
+			statement.setString(2, contato.getEmail());
+			statement.setInt(3, contato.getId());
+			
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao atualizar o contato.");
+		}
 	}
-
+	
+	public void remove(Contato contato) {
+		try {
+			Connection connection = getConnection();
+			PreparedStatement statement = connection.prepareStatement(
+					"DELETE FROM contatos WHERE id = ?");
+			
+			statement.setInt(1, contato.getId());
+			
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao remover o contato.");
+		}
+	}
+	
 }
